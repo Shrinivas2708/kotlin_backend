@@ -1,22 +1,23 @@
 {
   "name": "kotlin-backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node index.js",
-    "dev":"nodemon node index.js"
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "mongoose": "^8.19.2",
-    "nodemon": "^3.1.10"
+    "@neondatabase/serverless": "^1.0.2",
+    "@prisma/adapter-neon": "^6.18.0",
+    "@prisma/client": "^6.18.0",
+    "hono": "^4.10.4",
+    "mongoose": "^8.19.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20251014.0",
+    "@types/mongoose": "^5.11.97",
+    "prisma": "^6.18.0",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.4.0"
   }
 }

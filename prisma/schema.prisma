@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Blog {
+  id        String   @id @default(uuid())
+  title     String
+  body      String
+  tags      String[]
+  createdAt DateTime @default(now())
+}
