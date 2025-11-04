@@ -8,10 +8,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        String   @id @default(uuid()) // keep this as String type
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  blogs     Blog[]
+}
+
 model Blog {
   id        String   @id @default(uuid())
   title     String
   body      String
   tags      String[]
   createdAt DateTime @default(now())
+  authorId  String?              // plain String (no @db.Uuid)
+  author    User? @relation(fields: [authorId], references: [id])
 }
